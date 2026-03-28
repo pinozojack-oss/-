@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NKS GEKOKUJO SYSTEM | 日東駒専から資産で逆転</title>
+    <title>NKS GEKOKUJO MEDIA | 戦略的キャリアと資産形成</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #0f172a; font-family: 'Noto Sans JP', sans-serif; }
-        .font-anton { font-family: 'Anton', sans-serif; }
-    </style>
+        body { background-color: #f8fafc; font-family: 'Noto Sans JP', sans-serif; color: #1e293b; }
+        .font-oswald { font-family: 'Oswald', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); }
+    </script>
 </head>
 <body>
     <div id="root"></div>
@@ -26,77 +27,109 @@
             const [years, setYears] = useState(10);
 
             const calculateFinalAmount = () => {
-                const r = 0.05 / 12; // 年利5%
+                const r = 0.05 / 12;
                 const n = years * 12;
                 const compoundInterest = investment * Math.pow(1 + r, n);
                 const annuity = monthly * ((Math.pow(1 + r, n) - 1) / r);
                 return Math.round(compoundInterest + annuity).toLocaleString();
             };
 
+            const articles = [
+                { id: 1, tag: "民間就職", title: "日東駒専から『外資IT/コンサル』へ内定する最短ルート", desc: "学歴フィルターを論理力で突破するES術とは。" },
+                { id: 2, tag: "公務員", title: "法学部生必見：国家一般職を滑り止めにする併願戦略", desc: "専門科目を武器に、地元の県庁と本府省を同時に狙う。" },
+                { id: 3, tag: "資産運用", title: "元手25万円を10年で1000万にする『複利の暴力』活用法", desc: "レンジ相場を耐え抜いた者だけが手にするリターン。" },
+                { id: 4, tag: "格付け", title: "2026年最新：MARCH卒が嫉妬する『隠れ優良企業』Tier表", desc: "知名度は低いが年収800万を超えるBtoB企業リスト。" }
+            ];
+
             return (
-                <div className="min-h-screen text-white p-6 md:p-12">
-                    <header className="text-center mb-16">
-                        <h1 className="text-6xl md:text-8xl font-anton tracking-tighter text-blue-600 italic mb-4">NKS GEKOKUJO</h1>
-                        <p className="text-lg text-slate-400 font-bold">日東駒専から資産でMARCHを抜き去る「下剋上」システム</p>
+                <div className="min-h-screen">
+                    {/* Navigation */}
+                    <nav className="bg-white border-b sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
+                        <div className="font-oswald text-2xl tracking-tighter font-black text-blue-900">NKS GEKOKUJO</div>
+                        <div className="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-wider">
+                            <a href="#" className="hover:text-blue-600">Private</a>
+                            <a href="#" className="hover:text-blue-600">Civil Service</a>
+                            <a href="#" className="hover:text-blue-600">Investment</a>
+                            <a href="#" className="hover:text-blue-600 text-red-600">Ranking</a>
+                        </div>
+                    </nav>
+
+                    {/* Hero Section */}
+                    <header className="hero-gradient text-white py-20 px-6 text-center">
+                        <div className="max-w-4xl mx-auto">
+                            <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">思考停止の学歴社会を、<br/>戦略と資産でぶち破る。</h1>
+                            <p className="text-lg text-blue-100 mb-8">日東駒専からの民間大手・公務員合格、そしてNISAによる資産逆転の全記録</p>
+                        </div>
                     </header>
 
-                    <div className="max-w-4xl mx-auto space-y-12">
-                        {/* 格付けセクション */}
-                        <section className="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 shadow-xl">
-                            <h2 className="text-2xl font-black mb-6 text-blue-400 uppercase italic">Rank: 2026年 企業格付けTier</h2>
-                            <div className="space-y-3">
-                                <div className="flex items-center bg-red-600/20 border-l-8 border-red-600 p-4 rounded-r">
-                                    <span className="text-3xl font-anton mr-6 text-red-600">S</span>
-                                    <div>
-                                        <div className="font-bold">外資コンサル・五大商社・メガベンチャー</div>
-                                        <div className="text-xs text-slate-400">年収 1,000万〜 / タワマン確定圏</div>
-                                    </div>
-                                </div>
-                                <div className="flex items-center bg-orange-600/20 border-l-8 border-orange-600 p-4 rounded-r">
-                                    <span className="text-3xl font-anton mr-6 text-orange-600">A</span>
-                                    <div>
-                                        <div className="font-bold">大手金融・国家一般職（本府省）・広告代理店</div>
-                                        <div className="text-xs text-slate-400">年収 700万〜 / 上位10%の勝ち組</div>
-                                    </div>
-                                </div>
-                                <div className="flex items-center bg-blue-600/20 border-l-8 border-blue-600 p-4 rounded-r">
-                                    <span className="text-3xl font-anton mr-6 text-blue-600">B</span>
-                                    <div>
-                                        <div className="font-bold">日経中堅企業・地方公務員・ITエンジニア</div>
-                                        <div className="text-xs text-slate-400">年収 500万〜 / 堅実な資産形成層</div>
-                                    </div>
-                                </div>
+                    <main className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
+                        {/* Article Feed */}
+                        <div className="lg:col-span-2 space-y-12">
+                            <h2 className="text-xl font-black border-b-4 border-black inline-block pb-1 mb-6 uppercase">Latest Analysis</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                {articles.map(article => (
+                                    <article key={article.id} className="group cursor-pointer">
+                                        <div className="bg-slate-200 aspect-video mb-4 rounded-lg overflow-hidden relative">
+                                            <span className="absolute top-2 left-2 bg-blue-600 text-white text-[10px] px-2 py-1 font-bold uppercase">{article.tag}</span>
+                                        </div>
+                                        <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">{article.title}</h3>
+                                        <p className="text-sm text-slate-500">{article.desc}</p>
+                                    </article>
+                                ))}
                             </div>
-                        </section>
+                        </div>
 
-                        {/* NISAセクション */}
-                        <section className="bg-gradient-to-br from-slate-800 to-blue-900 p-8 rounded-2xl border border-blue-500/50 shadow-2xl">
-                            <h2 className="text-3xl font-black mb-8 text-yellow-400 italic uppercase">Reverse NISA: 逆転のシミュレーター</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                                <div>
-                                    <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Initial Capital (元手)</label>
-                                    <input type="number" value={investment} onChange={(e) => setInvestment(Number(e.target.value))} className="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-xl font-bold focus:border-blue-500 outline-none" />
-                                </div>
-                                <div>
-                                    <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Monthly Installment (毎月)</label>
-                                    <input type="number" value={monthly} onChange={(e) => setMonthly(Number(e.target.value))} className="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-xl font-bold focus:border-blue-500 outline-none" />
-                                </div>
-                                <div>
-                                    <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Years (運用年数)</label>
-                                    <input type="number" value={years} onChange={(e) => setYears(Number(e.target.value))} className="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-xl font-bold focus:border-blue-500 outline-none" />
+                        {/* Sidebar: Simulator */}
+                        <aside className="space-y-8">
+                            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                                <h2 className="text-lg font-black mb-6 flex items-center">
+                                    <span className="bg-yellow-400 w-2 h-6 mr-3"></span>
+                                    資産逆転シミュレーター
+                                </h2>
+                                <div className="space-y-4">
+                                    <div>
+                                        <label className="text-xs font-bold text-slate-400">元手 (円)</label>
+                                        <input type="number" value={investment} onChange={(e) => setInvestment(Number(e.target.value))} className="w-full bg-slate-50 border p-3 rounded-lg text-lg font-bold" />
+                                    </div>
+                                    <div>
+                                        <label className="text-xs font-bold text-slate-400">毎月積立 (円)</label>
+                                        <input type="number" value={monthly} onChange={(e) => setMonthly(Number(e.target.value))} className="w-full bg-slate-50 border p-3 rounded-lg text-lg font-bold" />
+                                    </div>
+                                    <div>
+                                        <label className="text-xs font-bold text-slate-400">期間 (年)</label>
+                                        <input type="number" value={years} onChange={(e) => setYears(Number(e.target.value))} className="w-full bg-slate-50 border p-3 rounded-lg text-lg font-bold" />
+                                    </div>
+                                    <div className="pt-4 border-t mt-4 text-center">
+                                        <p className="text-xs text-slate-400 mb-1">想定資産額 (年利5%)</p>
+                                        <p className="text-3xl font-black text-blue-700">¥{calculateFinalAmount()}</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="text-center p-6 bg-slate-900/50 rounded-xl border border-white/10">
-                                <p className="text-sm font-bold text-slate-400 mb-2">10年後、MARCH卒の貯金額を追い越す推定資産</p>
-                                <p className="text-5xl md:text-7xl font-anton text-green-400 tracking-wider">¥{calculateFinalAmount()}</p>
-                                <p className="mt-4 text-xs text-slate-500 italic">※日経平均インデックス利回り年利5%を想定</p>
-                            </div>
-                        </section>
 
-                        <footer className="text-center text-slate-600 text-xs py-10">
-                            © 2026 NKS GEKOKUJO SYSTEM | 思考停止の学歴社会を、投資と戦略でぶち破る。
-                        </footer>
-                    </div>
+                            {/* Ranking Card */}
+                            <div className="bg-black text-white p-6 rounded-2xl shadow-xl">
+                                <h2 className="text-lg font-black mb-4 text-red-500 uppercase">Target Companies</h2>
+                                <ul className="space-y-4 text-sm">
+                                    <li className="flex justify-between border-b border-slate-800 pb-2">
+                                        <span className="font-bold">1. 国家一般職 (本府省)</span>
+                                        <span className="text-red-500">Tier S</span>
+                                    </li>
+                                    <li className="flex justify-between border-b border-slate-800 pb-2">
+                                        <span className="font-bold">2. サイバーエージェント</span>
+                                        <span className="text-red-500">Tier S</span>
+                                    </li>
+                                    <li className="flex justify-between border-b border-slate-800 pb-2">
+                                        <span className="font-bold">3. オープンハウス</span>
+                                        <span className="text-red-500">Tier A</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </main>
+
+                    <footer className="bg-white border-t py-12 px-6 text-center text-xs text-slate-400">
+                        © 2026 NKS GEKOKUJO MEDIA | 学歴を超える「個」の力を証明する。
+                    </footer>
                 </div>
             );
         };
